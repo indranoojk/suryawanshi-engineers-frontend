@@ -52,7 +52,7 @@ const RegistrationForm = (props) => {
 
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="phone" className='text-xs text-[#9e8a5f]'>PHONE NO*</label> <br/>
-                    <input type="text" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='phone' name='phone' onChange={onChange} maxLength={10} required/>
+                    <input type="tel" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='phone' name='phone' onChange={onChange} maxLength={10} required/>
                 </div>
 
                 <div className='mb-3 lg:m-2'>
