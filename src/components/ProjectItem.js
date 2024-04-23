@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 const ProjectItem = (props) => {
 
     const context = useContext(projectContext)
-    const { deleteContract } = context
+    const { deleteProject } = context
     const { project, updateProject } = props;
 
     const [expandedProject, setexpandedProject] = React.useState(null);
