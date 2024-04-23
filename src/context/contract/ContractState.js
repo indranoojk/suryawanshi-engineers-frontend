@@ -10,22 +10,22 @@ const ContractState = (props) => {
 
     const [contracts, setContracts] = useState(contractInitial);
 
-    // Add a Contract
-    const addContract = async (firstname, lastname, email, phone, domain, city, width, length,  query) => {
+    // ROUTE 1: Add a Contract
+    const addContract = async (firstname, lastname, email, phone, domain, address, city, state, width, length,  query) => {
         const response = await fetch(`${baseUrl}/api/contract/addcontract`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo"
             },
-            body: JSON.stringify({ firstname, lastname, email, phone, domain, city, width, length,  query }),
+            body: JSON.stringify({ firstname, lastname, email, phone, domain, address, city, state, width, length,  query }),
         });
         const contract = await response.json()
         setContracts(contracts.concat(contract));
     };
 
     
-    // Get all Contracts
+    // ROUTE 2: Get all Contracts
     const getContracts = async () => {
         // API call
         const response = await fetch(`${baseUrl}/api/contract/fetchallcontracts`, {
@@ -41,7 +41,7 @@ const ContractState = (props) => {
     };
 
 
-    // Delete a Contract
+    // ROUTE 3: Delete a Contract
     const deleteContract = async (id) => {
         // API call
         const response = await fetch(`${baseUrl}/api/contract/deletecontract/${id}`, {
@@ -61,7 +61,7 @@ const ContractState = (props) => {
         setContracts(newContract);
     };
 
-
+    
   return (
     <ContractContext.Provider
         value = {{ contracts, setContracts, addContract, deleteContract, getContracts }}
@@ -71,4 +71,4 @@ const ContractState = (props) => {
   )
 }
 
-export default ContractState
+export default ContractState;

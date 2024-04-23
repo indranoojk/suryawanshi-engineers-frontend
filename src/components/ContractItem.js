@@ -55,7 +55,11 @@ const ContractItem = (props) => {
 
               <h2 className='text-2xl font-bold'>Domain: <span className='text-2xl font-extralight lg:font-medium lg:ml-36'>{contract.domain} </span></h2>
 
+              <h2 className='text-2xl font-bold'>Project Address: <span className='text-2xl font-extralight lg:font-medium lg:ml-48'>{contract.address} </span></h2>
+
               <h2 className='text-2xl font-bold'>City: <span className='text-2xl font-extralight lg:font-medium lg:ml-48'>{contract.city} </span></h2>
+
+              <h2 className='text-2xl font-bold'>State: <span className='text-2xl font-extralight lg:font-medium lg:ml-48'>{contract.state} </span></h2>
 
               <h2 className='text-2xl font-bold'> :: Plot Area :: </h2>
 

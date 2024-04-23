@@ -3,14 +3,6 @@ import { Link } from 'react-router-dom'
 import RegistrationForm from './RegistrationForm'
 import ContractState from '../context/contract/ContractState'
 
-// import poster from '../assets/images/Suryawanshi poster.png'
-// import house1 from '../assets/images/house1.png'
-// import house2 from '../assets/images/house2.png'
-// import plan1 from '../assets/images/plan1.png'
-// import plan2 from '../assets/images/plan2.png'
-// import Founder from './Founder'
-// import RegistrationForm from './RegistrationForm'
-
 const Home = () => {
 
 
