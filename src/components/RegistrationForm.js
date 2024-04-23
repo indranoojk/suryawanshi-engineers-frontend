@@ -8,11 +8,11 @@ const RegistrationForm = (props) => {
     const context = useContext(contractContext);
     const {addContract} = context;
 
-    const [contract, setContract] = useState({firstname: "", lastname: "", email: "", phone: "", domain: "", city: "", query: ""})
+    const [contract, setContract] = useState({firstname: "", lastname: "", email: "", phone: "", domain: "", city: "", width: "", length: "", query: ""})
     const handleClick = (e) => {
         e.preventDefault();
-        addContract(contract.firstname, contract.lastname, contract.email, contract.phone, contract.domain, contract.city, contract.query);
-        setContract({firstname: "", lastname: "", email: "", phone: "", domain: "", city: "", query: ""})
+        addContract(contract.firstname, contract.lastname, contract.email, contract.phone, contract.domain, contract.city, contract.width, contract.length, contract.query);
+        setContract({firstname: "", lastname: "", email: "", phone: "", domain: "", city: "", width: "", length: "", query: ""})
 
         Swal.fire({
             title: 'Success!',
@@ -56,6 +56,7 @@ const RegistrationForm = (props) => {
                 </div>
 
                 <div className='mb-3 lg:m-2'>
+                    {/* Change the domain and ask "Type of work?" */}
                     <label htmlFor="domain" className='text-xs text-[#9e8a5f]'>What is your domain?*</label> <br/>
                     <select className='mt-0 block w-full px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' name="domain" id="domain" onChange={onChange} minLength={5} required>
                         <option className='bg-[#252425]' value="none">Please select</option>
@@ -66,10 +67,33 @@ const RegistrationForm = (props) => {
                 </div>
 
                 <div className='mb-3 lg:m-2'>
-                    <label htmlFor="city" className='text-xs text-[#9e8a5f]'>CITY*</label> <br/>
+                    <label htmlFor="city" className='text-xs text-[#9e8a5f]'>Your Place/Area*</label> <br/>
                     <input type="text" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='city' name='city' onChange={onChange} minLength={2} required/>
                 </div>
 
+                <div className='mb-3 lg:m-2'>
+                <label htmlFor="width" className='text-sm text-[#9e8a5f]'> :: Plot Area ::</label> <br/>
+                    <div className="flex space-x-6">
+                    <div>
+                    <label htmlFor="width" className='text-xs text-[#9e8a5f]'>Width (in feet) *</label> <br/>
+                    <input type="number" className='mt-0 block w-36 lg:w-36 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='width' name='width' onChange={onChange} minLength={2} required/>
+                    </div>
+
+                    <div>
+                    <label htmlFor="length" className='text-xs text-[#9e8a5f]'>Length (in feet) *</label> <br/>
+                    <input type="number" className='mt-0 block w-36 lg:w-36 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='length' name='length' onChange={onChange} minLength={2} required/>
+                    </div>
+                    </div>
+                </div>
+
+                {/* <div className='mb-3 lg:m-2'>
+                    <label htmlFor="length" className='text-xs text-[#9e8a5f]'>Length (in feet) *</label> <br/>
+                    <input type="number" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='length' name='length' onChange={onChange} minLength={2} required/>
+                </div> */}
+
+                
+
+                {/* <div className='mb-3 lg:m-2 row-span-2'> */}
                 <div className='mb-3 lg:m-2 row-span-2'>
                     <label htmlFor="query" className='text-xs text-[#9e8a5f]'>TELL US MORE ABOUT YOUR PROJECT</label> <br/>
                     <textarea className='mt-0 block w-full px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' name="query" id="query" onChange={onChange} minLength={15} cols="30" rows="5" ></textarea>
@@ -78,7 +102,7 @@ const RegistrationForm = (props) => {
                 <br />
 
                 <div>
-                    <button disabled={contract.firstname.length<3 || contract.lastname.length<3 || contract.phone.length<10 || contract.domain.length === 'Please select' || contract.city.length<2} type='submit' className='bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-32 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue' onClick={handleClick}> SUBMIT </button>
+                    <button disabled={contract.firstname.length<3 || contract.lastname.length<3 || contract.phone.length<10 || contract.domain.length === 'Please select' || contract.city.length<2 || contract.width.length<2 || contract.length.length<2} type='submit' className='bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-20 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue' onClick={handleClick}> SUBMIT </button>
                 </div>
                 
                 

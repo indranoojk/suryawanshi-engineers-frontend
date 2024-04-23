@@ -11,14 +11,14 @@ const ContractState = (props) => {
     const [contracts, setContracts] = useState(contractInitial);
 
     // Add a Contract
-    const addContract = async (firstname, lastname, email, phone, domain, city, query) => {
+    const addContract = async (firstname, lastname, email, phone, domain, city, width, length,  query) => {
         const response = await fetch(`${baseUrl}/api/contract/addcontract`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo"
             },
-            body: JSON.stringify({ firstname, lastname, email, phone, domain, city, query }),
+            body: JSON.stringify({ firstname, lastname, email, phone, domain, city, width, length,  query }),
         });
         const contract = await response.json()
         setContracts(contracts.concat(contract));

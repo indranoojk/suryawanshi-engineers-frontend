@@ -29,7 +29,7 @@ const Login = (props) => {
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
-            navigate("/contract");
+            navigate("/portal");
             // history.push("/");
         }
         else {

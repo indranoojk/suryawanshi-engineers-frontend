@@ -10,17 +10,17 @@ const Navbar = () => {
     
     let location = useLocation();
 
-    if (location.pathname === "/contract" ) {
+    if (location.pathname === "/contract"  || location.pathname === "/portal" || location.pathname === "/projectEdit" || location.pathname === "/changePass") {
         return null;
     }
 
   return (
     <>
         {/* Navbar Starts here */}
-        <nav className='flex items-center justify-between flex-wrap bg-[#02030a] p-0 pr-10 lg:p-2 '>
+        <nav className='flex lg:fixed lg:w-full lg:h-24 lg:top-0 lg:z-[9999] items-center justify-between flex-wrap bg-[#02030a] p-0 pr-10 lg:p-2 mt-0'>
             {/* Logo and Nav title */}
-            <div className="flex items-center flex-shrink-0 text-white lg:mr-8">
-                <img className='w-32 block ' src={logo} alt="" /> 
+            <div className="flex items-center lg:h-16 flex-shrink-0 text-white lg:mr-8">
+                <img className='w-28 block ' src={logo} alt="" /> 
                 <span style={{fontFamily: "'Cinzel', serif"}} className="font-semibold italic text-xl tracking-tight hidden lg:block">Suryawanshi</span>
                 <span style={{fontFamily: "'Cinzel', serif"}} className="font-semibold italic text-xl tracking-tight pt-10 -ml-10 hidden lg:block">Engineers</span>
             </div>
