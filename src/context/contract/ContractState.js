@@ -10,7 +10,7 @@ const ContractState = (props) => {
 
     const [contracts, setContracts] = useState(contractInitial);
 
-    // ROUTE 1: Add a Contract
+    // Add a Contract
     const addContract = async (firstname, lastname, email, phone, domain, address, city, state, width, length,  query) => {
         const response = await fetch(`${baseUrl}/api/contract/addcontract`, {
             method: "POST",
@@ -25,7 +25,7 @@ const ContractState = (props) => {
     };
 
     
-    // ROUTE 2: Get all Contracts
+    // Get all Contracts
     const getContracts = async () => {
         // API call
         const response = await fetch(`${baseUrl}/api/contract/fetchallcontracts`, {
@@ -41,7 +41,7 @@ const ContractState = (props) => {
     };
 
 
-    // ROUTE 3: Delete a Contract
+    // Delete a Contract
     const deleteContract = async (id) => {
         // API call
         const response = await fetch(`${baseUrl}/api/contract/deletecontract/${id}`, {

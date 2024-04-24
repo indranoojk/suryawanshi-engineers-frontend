@@ -1,5 +1,6 @@
 import { Button, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { baseUrl } from "../Urls";
 
 const UploadImage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -15,7 +16,7 @@ const UploadImage = () => {
     formData.append("image", selectedFile);
     formData.append("name", name)
     try {
-      const response = await fetch("http://localhost:8080/img/upload", {
+      const response = await fetch(`${baseUrl}/img/upload`, {
         method: "POST",
         body: formData,
       });
@@ -29,7 +30,6 @@ const UploadImage = () => {
   return (
     <div>
       <Input type="file" accept="image/*" onChange={handleFileChange} />
-      <Input required type="text" value={name} onChange={(e)=>setName(e.target.value)} />
       <Button onClick={handleUpload}>Submit</Button>
     </div>
   );

@@ -16,6 +16,34 @@ const ProjectItem = (props) => {
         setexpandedProject(index);
     };
 
+
+    const handleDelete = () => {
+      
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+              confirmButtonText: "OK"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                  window.location.reload();
+              }
+            })
+            deleteProject(project._id);
+          }
+        });
+      }
+
     return (
         <>
             <div className='my-10 mx-5 lg:mx-16'>
@@ -42,6 +70,10 @@ const ProjectItem = (props) => {
                         className="fixed lg:mt-24 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
                         onClick={() => setexpandedProject(null)}
                     >
+                        <div className="float-right">
+                <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{updateProject(project)}}></i>
+                <i className="fa-solid fa-trash-can mx-2" onClick={handleDelete}>   <span className='ml-1 text-red-600'>Delete</span> </i>
+              </div>
                         <div
                         className="w-full max-w-2xl rounded-lg bg-white p-8 text-center shadow-lg"
                         >

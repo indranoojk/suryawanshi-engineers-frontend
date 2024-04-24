@@ -7,7 +7,7 @@ import UploadImage from './UploadImage'
 const ProjectEdit = (props) => {
 
   const context = useContext(projectContext);
-    const { addProject } = context;
+  const { addProject } = context;
 
     const [project, setProject] = useState({title: "", content: ""})
     const handleClick = (e)=> {
