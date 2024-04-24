@@ -29,7 +29,7 @@ const UploadImage = () => {
   };
   return (
     <div>
-      <Input type="file" accept="image/*" onChange={handleFileChange} />
+      <Input type="file" name="image" accept="image/*" onChange={handleFileChange} />
       <Button onClick={handleUpload}>Submit</Button>
     </div>
   );
