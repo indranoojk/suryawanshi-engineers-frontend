@@ -2,17 +2,18 @@ import React, { useState, useContext } from 'react'
 import projectContext from '../context/project/projectContext'
 import PlainNav from './PlainNav'
 import Sidebar from './Sidebar/Sidebar'
+import UploadImage from './UploadImage'
 
 const ProjectEdit = (props) => {
 
   const context = useContext(projectContext);
-    const {addProject} = context;
+    const { addProject } = context;
 
-    const [project, setProject] = useState({title: "", image: "", content: ""})
+    const [project, setProject] = useState({title: "", content: ""})
     const handleClick = (e)=> {
         e.preventDefault();
-        addProject(project.title, project.image, project.content);
-        setProject({title: "", image: "", content: ""})
+        addProject(project.title, project.content);
+        setProject({title: "", content: ""})
     }
 
     const onChange = (e)=> {
@@ -36,10 +37,7 @@ const ProjectEdit = (props) => {
                     <input type="text" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='title' name='title' onChange={onChange} minLength={3} required/>
                 </div>
 
-                <div className='mb-3 lg:m-2'>
-                    <label htmlFor="img" className='text-xs text-[#9e8a5f]'>Select image:</label>
-                    <input type="file" id="img" name="img" accept="image/*" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' onChange={onChange} required />
-                </div>
+                <UploadImage />
 
 
                 {/* <div className='mb-3 lg:m-2 row-span-2'> */}
