@@ -5,7 +5,7 @@ import { baseUrl } from "../Urls";
 const UploadImage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   
-  const [name, setName] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -14,13 +14,15 @@ const UploadImage = () => {
     console.log(selectedFile)
     const formData = new FormData();
     formData.append("image", selectedFile);
-    formData.append("name", name)
+    formData.append("imageUrl", imageUrl)
     try {
       const response = await fetch(`${baseUrl}/api/image/upload`, {
         method: "POST",
         body: formData,
       });
 
+      const data = await response.json()
+      setImageUrl(data.imageUrl)
       // Handle the response from the server
       console.log("File uploaded successfully", response);
     } catch (error) {
@@ -29,7 +31,7 @@ const UploadImage = () => {
   };
   return (
     <div>
-      <Input type="file" name="image" accept="image/*" onChange={handleFileChange} />
+      <Input type="file" accept="image/*" onChange={handleFileChange} />
       <Button onClick={handleUpload}>Submit</Button>
     </div>
   );
