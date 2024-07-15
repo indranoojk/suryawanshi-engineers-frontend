@@ -10,7 +10,7 @@ const Home = () => {
     <>
 
         <div className="intro ">
-            <h1 style={{fontFamily: "'Cinzel', serif"}} className='text-5xl font-bold p-4 mt-4'>Welcome to Suywawanshi Engineers</h1>
+            <h1 style={{fontFamily: "'Cinzel', serif"}} className='text-5xl font-bold p-4 mt-4'><span className='text-4xl font-semibold'>Welcome to</span> Suywawanshi Engineers</h1>
         </div>
 
         {/* Intro content */}

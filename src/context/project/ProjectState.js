@@ -92,7 +92,9 @@ const ProjectState = (props) => {
 
     return (
 
-        <ProjectContext.Provider value={{ projects, setProjects, addProject, editProject, deleteProject, getProjects }} >
+        <ProjectContext.Provider 
+            value={{ projects, setProjects, addProject, editProject, deleteProject, getProjects }} 
+        >
             {props.children}
         </ProjectContext.Provider>
     )

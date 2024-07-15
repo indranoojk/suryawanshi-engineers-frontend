@@ -18,6 +18,7 @@ import Contract from './components/Contract';
 import Portal from './components/Portal';
 import ProjectEdit from './components/ProjectEdit';
 import ChangePass from './components/ChangePass';
+import ProjectState from './context/project/ProjectState';
 // import Signup from './components/Signup';
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
   return (
     <>
       <ContractState>
-        <Router>
+        <ProjectState>
+          <Router>
             <Navbar />
             <Routes>
               <Route exact path='/' element={<Home />} />
@@ -44,10 +46,10 @@ function App() {
               <Route exact path='/changePass' element={<ChangePass />} />
             </Routes>
             <Footer />
-        </Router>
+          </Router>
 
         {/* <Contract /> */}
-
+        </ProjectState>
       </ContractState>
       
     </>

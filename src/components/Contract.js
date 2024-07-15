@@ -64,7 +64,7 @@ const Contract = (props) => {
           <div className="text-4xl text-red-600 mt-16 font-bold text-center">
             {contracts.length === 0 && 'No contracts are available to display'}
           </div>
-
+          
           {contracts.map((contract) => {
             return <ContractItem key={contract._id} contract={contract} />
           })}

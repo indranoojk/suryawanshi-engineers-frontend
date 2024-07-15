@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import '../index.css';
 import contractContext from '../context/contract/contractContext';
 import Swal from 'sweetalert2'
-import UploadImage from './UploadImage';
+// import UploadImage from './UploadImage';
 
 const RegistrationForm = (props) => {
 
@@ -143,9 +143,6 @@ const RegistrationForm = (props) => {
                     <label htmlFor="length" className='text-xs text-[#9e8a5f]'>Length (in feet) *</label> <br/>
                     <input type="number" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='length' name='length' onChange={onChange} minLength={2} required/>
                 </div> */}
-
-
-                <UploadImage />
 
                 
 
