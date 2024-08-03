@@ -19,6 +19,7 @@ import Portal from './components/Portal';
 import ProjectEdit from './components/ProjectEdit';
 import ChangePass from './components/ChangePass';
 import ProjectState from './context/project/ProjectState';
+import ProjectExpanded from './components/ProjectExpanded';
 // import Signup from './components/Signup';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
               <Route exact path='/RenovationsAndRemodeling' element={<RenovationsAndRemodeling />} />
               <Route exact path='/InteriorDesign' element={<InteriorDesign />} />
               <Route exact path='/projects' element={<Projects />} />
+              <Route exact path='/projectExpanded' element={<ProjectExpanded />} />
               <Route exact path='/contact' element={<Contact />} />
               <Route exact path='/login' element={<Login />} />
               {/* <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} /> */}

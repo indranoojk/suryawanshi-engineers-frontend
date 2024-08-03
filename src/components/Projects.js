@@ -1,6 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import projectContext from "../context/project/projectContext"
 import ProjectItem from './ProjectItem';
+import ImageUpload from './ImageUpload';
+import DisplayImage from './DisplayImage';
+import ImageDisplay from './ImageDisplay';
+import ProjectForm from './ProjectForm';
+import ProjectList from './ProjectList';
 // import { useNavigate } from 'react-router-dom'
 
 
@@ -12,12 +17,10 @@ const Projects = (props) => {
     // let navigate = useNavigate();
 
     // eslint-disable-next-line
-    // useEffect(() => {
-    //     if (localStorage.getItem('token')) {
-    //         getProjects()
-    //     }
-    //     // eslint-disable-next-line
-    // }, [])
+    useEffect(() => {
+            getProjects()
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <>
@@ -26,14 +29,22 @@ const Projects = (props) => {
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 mx-4 lg:mx-16 my-4 mb-20">
             
-                <div className="text-4xl text-red-600 mt-16 font-bold text-center">
-                    {projects.length === 0 && 'Projects under construction...'}
+                <div className={` ${projects.length === 0 ? "block" : "hidden"} text-4xl text-red-600 mt-16 font-serif font-bold text-center`}>
+                    {'Projects under construction...'}
                 </div>
-
+            
                 {projects.map((project) => {
                     return <ProjectItem key={project._id} project={project} />
                 })}
             </div>
+
+            {/* <div className="m-20">
+                <ProjectForm />
+            </div>
+
+            <div className="m-20">
+                <ProjectList />
+            </div> */}
         </>
     )
 

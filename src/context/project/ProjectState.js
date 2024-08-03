@@ -1,103 +1,98 @@
-// require("dotenv").config();
-import React, { useState } from "react"
-import ProjectContext from "./projectContext"
-import { baseUrl } from "../../Urls";
-
+// require("dotenv").config(); // Assuming environment variables are configured
+import React, { useState } from "react";
+import ProjectContext from "./projectContext";
+import { baseUrl } from "../../Urls"; // Assuming baseUrl is defined elsewhere
 
 const ProjectState = (props) => {
+  const projectInitial = [];
 
-    const projectInitial = [];
+  const [projects, setProjects] = useState(projectInitial);
 
-    const [projects, setProjects] = useState(projectInitial);
+  // Add a project with image handling
+  const addProject = async (title, description, content, image) => {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("content", content);
 
-    // ROUTE 1: Add a project
-    const addProject = async (title, content) => {
-        const response = await fetch(`${baseUrl}/api/project/addproject`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo"
-            },
-            body: JSON.stringify({ title, content }),
-        });
-        const project = await response.json()
-        setProjects(projects.concat(project));
-    };
-
-
-    // ROUTE 2: Get all projects
-    const getProjects = async () => {
-        // API call
-        const response = await fetch(`${baseUrl}/api/project/fetchallprojects`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo"
-            },
-        });
-        const json = await response.json();
-        console.log(json);
-        setProjects(json);
-    };
-
-     // Edit a project
-  const editProject = async (id, title, content) => {
-    // API call
-    // eslint-disable-next-line
-    const response = await fetch(`${host}/api/project/updateproject/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem('token')
-      },
-      body: JSON.stringify({ title, content }),
-    });
-    const json = await response.json();
-    console.log(json)
-    // eslint-disable-next-line
-
-    let newProjects = JSON.parse(JSON.stringify(projects))
-    // Logic to edit in client
-    for (let index = 0; index < newProjects.length; index++) {
-      const element = newProjects[index];
-      if (element._id === id) {
-        newProjects[index].title = title;
-        newProjects[index].content = content;
-        break;
-      }
+    if (image) {
+      // Assuming imageFile is a File object
+      formData.append("image", image); // Attach image to form data
     }
-    setProjects(newProjects)
+
+    try {
+      const response = await fetch(`${baseUrl}/api/project/addproject`, {
+        method: "POST",
+        headers: {
+            // Not required for file uploads
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", // Replace with your actual token
+        },
+        body: formData,
+      });
+
+      const project = await response.json();
+      console.log(project);
+      setProjects(projects.concat(project));
+    } catch (error) {
+      console.error("Error adding project:", error);
+    }
   };
 
-    // ROUTE 4: Delete a project
-    const deleteProject = async (id) => {
-        // API call
-        const response = await fetch(`${baseUrl}/api/project/deleteproject/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo"
-            },
-        });
-        const json = response.json();
-        console.log(json);
 
-        console.log("Deleting the project with id" + id);
-        const newProject = projects.filter((project) => {
-            return project.id !== id;
-        });
-        setProjects(newProject);
-    };
+  
 
 
-    return (
+  // Get all projects
+  const getProjects = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/api/project/fetchallprojects`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", // Replace with your actual token
+        },
+      });
 
-        <ProjectContext.Provider 
-            value={{ projects, setProjects, addProject, editProject, deleteProject, getProjects }} 
-        >
-            {props.children}
-        </ProjectContext.Provider>
-    )
-}
+      const json = await response.json();
+      console.log(json);
+      setProjects(json);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
+
+  // Edit a project (not implemented)
+  // Implement logic for editing project on the backend and updating state
+
+  // Delete a project
+  const deleteProject = async (id) => {
+    try {
+      const response = await fetch(`${baseUrl}/api/project/deleteproject/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", // Replace with your actual token
+        },
+      });
+
+      const json = await response.json();
+      console.log(json);
+
+      console.log("Deleting the project with id", id);
+      const newProjects = projects.filter((project) => project._id !== id);
+      setProjects(newProjects);
+    } catch (error) {
+      console.error("Error deleting project:", error);
+    }
+  };
+
+  return (
+    <ProjectContext.Provider
+      value={{ projects, setProjects, addProject, deleteProject, getProjects }}
+    >
+      {props.children}
+    </ProjectContext.Provider>
+  );
+};
 
 export default ProjectState;

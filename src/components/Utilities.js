@@ -35,3 +35,44 @@
 
 
 
+
+
+
+
+// Project cards with title and desc
+<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-4 lg:mx-8 my-4 mb-20">
+
+{/* Project card */}
+{/* <Link to={`/`}> */}
+  <div className='relative lg:w-96 p-2'>
+        <div className="cursor-pointer text-center items-center">
+            <img className='lg:w-96 h-56 object-cover' src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
+          
+
+            <div className="transition duration-300 ease-in-out hover:-translate-y-4">
+                <div className="absolute bottom-1 lg:pl-20 text-white mb-12 text-4xl font-serif uppercase bg-gradient-to-t from-slate-600 to-transparent">
+                    {project.title}
+                </div>
+                
+                <div className="absolute bottom-1 lg:pl-20 text-[#b56adb] mb-4 text-xl font-serif uppercase bg-gradient-to-t from-slate-600 to-transparent">
+                    {project.content}
+                </div>
+            </div>
+        </div>
+
+        
+
+        {/* <div className="bg-gradient-to-t from-slate-600 to-transparent w-96
+        h-72"></div> */}
+        
+        
+        {/* <div className="px-3 py-2 bg-black text-white cursor-pointer" onClick={()=>{updateProject(project)}}>Update</div> */}
+
+
+
+  </div>
+{/* </Link> */}
+</div>
+
+
+

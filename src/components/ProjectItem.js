@@ -1,21 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { CSSTransition } from "react-transition-group";
 import projectContext from '../context/project/projectContext';
 import Swal from 'sweetalert2'
-import image from '../assets/images/beach waves.png'
+import { Link } from 'react-router-dom';
+// import image from '../assets/images/beach waves.png'
 
 
 const ProjectItem = (props) => {
 
     const context = useContext(projectContext)
-    const { deleteProject } = context
-    const { project, updateProject } = props;
+    const { getProjects, deleteProject } = context
+    const { index, project } = props;
 
-    const [expandedProject, setexpandedProject] = React.useState(null);
+    useEffect(() => {
+      getProjects()
+  // eslint-disable-next-line
+    }, [])
 
-    const handleProjectClick = (index) => {
-        setexpandedProject(index);
-    };
+    // const [expandedProject, setexpandedProject] = React.useState(null);
+
+    // const handleProjectClick = (index) => {
+    //     setexpandedProject(index);
+    // };
 
 
     const handleDelete = () => {
@@ -47,21 +53,46 @@ const ProjectItem = (props) => {
 
     return (
         <>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 mx-4 lg:mx-16 my-4 mb-20 ">
-               <div className='bg-yellow-300'>
-                    <div className="">
-                      <img src={image} alt="" />
-                    </div>
-                    <div className="text-2xl font-bold">
-                        {project.title}
-                    </div>
-                    <div className="text-xl font-bold">
-                        {project.content}
-                    </div>
-                    <div className="px-3 py-2 bg-black text-white cursor-pointer" onClick={()=>{updateProject(project)}}>Update</div>
+            
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-4 lg:mx-8 my-4 mb-20">
 
-               </div>
-            </div>
+            {/* Project card */}
+            {/* <Link to={`/`}> */}
+              <div className='relative lg:w-96 p-2'>
+                    <div className="cursor-pointer text-center items-center">
+                        {/* <img className='lg:w-96 h-56 object-cover' src={"https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&cs=tinysrgb&w=1280"} alt="" /> */}
+                        <img className='lg:w-96 h-56 object-cover' src={`../assets/images/${project.image}`} alt={project.title} />
+                      
+
+                        {/* <div className="transition duration-300 ease-in-out hover:-translate-y-4"> */}
+                        <div className="">
+                            <div className="absolute bottom-1 lg:pl-20 text-white mb-12 text-4xl font-serif uppercase bg-yellow-200">
+                                {project.title}
+                            </div>
+                            
+                            <div className="absolute bottom-1 lg:pl-20 text-[#b56adb] mb-4 text-xl font-serif uppercase bg-yellow-200">
+                                {project.description}
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    {/* <div className="bg-gradient-to-t from-slate-600 to-transparent w-96
+                    h-72"></div> */}
+                    
+                    
+                    {/* <div className="px-3 py-2 bg-black text-white cursor-pointer" onClick={()=>{updateProject(project)}}>Update</div> */}
+
+
+
+              </div>
+          {/* </Link> */}
+          </div>
+
+
+
+            
                     
         </>
     )

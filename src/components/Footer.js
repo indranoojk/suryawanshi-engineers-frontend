@@ -35,7 +35,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className='-mt-2 text-sm lg:text-base text-center mr-12 lg:col-start-3 lg:mt-8'>
+            <div className='-mt-2 text-sm space-y-2 lg:text-base text-center mr-12 lg:col-start-3 lg:mt-8'>
               <h3 className='-ml-12'>suryawanshir254@gmail.com</h3>
               <h3>9545656358</h3>
               <h3>8237390171</h3>
