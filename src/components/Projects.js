@@ -1,11 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import projectContext from "../context/project/projectContext"
 import ProjectItem from './ProjectItem';
-import ImageUpload from './ImageUpload';
-import DisplayImage from './DisplayImage';
-import ImageDisplay from './ImageDisplay';
-import ProjectForm from './ProjectForm';
-import ProjectList from './ProjectList';
 // import { useNavigate } from 'react-router-dom'
 
 
