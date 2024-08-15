@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 // import UploadImage from './UploadImage'
 // import ProjectItem from './ProjectItem'
 import Swal from 'sweetalert2'
+import { baseUrl } from "../Urls";
 // import ProjectEditItem from './ProjectEditItem'
-// import { baseUrl } from "../Urls";
 
 const ProjectEdit = (props) => {
 
@@ -16,6 +16,7 @@ const ProjectEdit = (props) => {
 
   const context = useContext(projectContext);
   const { addProject, getProjects } = context;
+
 
   let navigate = useNavigate();
   // eslint-disable-next-line
@@ -29,15 +30,43 @@ const ProjectEdit = (props) => {
     // eslint-disable-next-line
   }, [])
 
-    const [image, setImage] = useState(null);
+  
+  const [project, setProject] = useState({title: "", description: "", content: ""})
 
-    const [project, setProject] = useState({title: "", description: "", content: ""})
+  const [img, setImg] = useState("");
+
+  const formdata = new FormData();
+  formdata.append("image", img);
     
-    const handleSubmit = (e)=> {
+  const onChange = (e)=> {
+      setProject({...project, [e.target.name]: e.target.value})
+  }
+
+  const onImageChange = (e)=> {
+    setImg(e.target.files[0]);
+  }
+
+    const handleSubmit = async (e)=> {
         e.preventDefault();
-        addProject(project.title, project.description, project.content, image);
+
+        addProject(project.title, project.description, project.content);
         setProject({title: "", description: "", content: ""})
-        setImage(null)
+
+        const response = await fetch(`${baseUrl}/api/image/upload`, {
+          method: "POST",
+          headers: {
+            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", 
+          },
+          body: formdata,
+        }).then((res) => {
+          console.log(res.msg);
+        })
+        .catch((err) => {
+          console.log("Error uploading image: ", err);
+        });
+
+        setImg("");
+
 
         Swal.fire({
             title: 'Success!',
@@ -51,13 +80,6 @@ const ProjectEdit = (props) => {
           })
     }
 
-    const onChange = (e)=> {
-        setProject({...project, [e.target.name]: e.target.value})
-    }
-
-    const onImageChange = (event)=> {
-      setImage(event.target.files[0]);
-    }
 
   return (
     <>

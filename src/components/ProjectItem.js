@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { CSSTransition } from "react-transition-group";
 import projectContext from '../context/project/projectContext';
+import imageContext from '../context/image/imageContext'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
 // import image from '../assets/images/beach waves.png'
@@ -12,8 +12,14 @@ const ProjectItem = (props) => {
     const { getProjects, deleteProject } = context
     const { index, project } = props;
 
+    const contextImage = useContext(imageContext);
+    const { images, getImage } = contextImage; 
+    const { image } = props
+
+
     useEffect(() => {
       getProjects()
+      getImage()
   // eslint-disable-next-line
     }, [])
 
@@ -61,7 +67,7 @@ const ProjectItem = (props) => {
               <div className='relative lg:w-96 p-2'>
                     <div className="cursor-pointer text-center items-center">
                         {/* <img className='lg:w-96 h-56 object-cover' src={"https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&cs=tinysrgb&w=1280"} alt="" /> */}
-                        <img className='lg:w-96 h-56 object-cover' src={`../assets/images/${project.image}`} alt={project.title} />
+                        <img className='lg:w-96 h-56 object-cover' src={`../../backend/uploads/${image._id}`} alt={project.title} />
                       
 
                         {/* <div className="transition duration-300 ease-in-out hover:-translate-y-4"> */}

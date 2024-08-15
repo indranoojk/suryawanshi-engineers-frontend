@@ -1,7 +1,7 @@
 // require("dotenv").config(); // Assuming environment variables are configured
 import React, { useState } from "react";
 import ProjectContext from "./projectContext";
-import { baseUrl } from "../../Urls"; // Assuming baseUrl is defined elsewhere
+import { baseUrl } from "../../Urls";  // Assuming baseUrl is defined elsewhere
 
 const ProjectState = (props) => {
   const projectInitial = [];
@@ -9,25 +9,15 @@ const ProjectState = (props) => {
   const [projects, setProjects] = useState(projectInitial);
 
   // Add a project with image handling
-  const addProject = async (title, description, content, image) => {
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("content", content);
-
-    if (image) {
-      // Assuming imageFile is a File object
-      formData.append("image", image); // Attach image to form data
-    }
-
+  const addProject = async (title, description, content) => {
     try {
       const response = await fetch(`${baseUrl}/api/project/addproject`, {
         method: "POST",
         headers: {
-            // Not required for file uploads
-          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", // Replace with your actual token
+          "Content-Type": "application/json",
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", 
         },
-        body: formData,
+        body: JSON.stringify({ title, description, content }),
       });
 
       const project = await response.json();
@@ -49,7 +39,7 @@ const ProjectState = (props) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", // Replace with your actual token
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo",
         },
       });
 
@@ -71,7 +61,7 @@ const ProjectState = (props) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", // Replace with your actual token
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", 
         },
       });
 
