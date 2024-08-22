@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
 import projectContext from '../context/project/projectContext';
-import imageContext from '../context/image/imageContext'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
+import { baseUrl } from "../Urls";
 // import image from '../assets/images/beach waves.png'
 
 
@@ -10,18 +10,36 @@ const ProjectItem = (props) => {
 
     const context = useContext(projectContext)
     const { getProjects, deleteProject } = context
-    const { index, project } = props;
+    const { index, project, imageId } = props;
 
-    const contextImage = useContext(imageContext);
-    const { images, getImage } = contextImage; 
-    const { image } = props
+    const [imageUrl, setImageUrl] = useState(null);
 
-
+    
     useEffect(() => {
+
+      const getImage = async () => {
+        try {
+          const response = await fetch(`${baseUrl}/api/images/image/${imageId}`, {
+            method: "GET",
+            // headers: {
+            //   "Content-Type": "application/json",
+            //   "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo",
+            // },
+          });
+  
+          const blob = new Blob([response.data], { type: 'image/*' });
+          const url = URL.createObjectURL(blob);
+          setImageUrl(url);
+        } catch (error) {
+          console.error('Error getting image:', error);
+        }
+      };
+  
+
       getProjects()
       getImage()
   // eslint-disable-next-line
-    }, [])
+    }, [imageId]);
 
     // const [expandedProject, setexpandedProject] = React.useState(null);
 
@@ -67,7 +85,13 @@ const ProjectItem = (props) => {
               <div className='relative lg:w-96 p-2'>
                     <div className="cursor-pointer text-center items-center">
                         {/* <img className='lg:w-96 h-56 object-cover' src={"https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&cs=tinysrgb&w=1280"} alt="" /> */}
-                        <img className='lg:w-96 h-56 object-cover' src={`../../backend/uploads/${image._id}`} alt={project.title} />
+                        {/* <img className='lg:w-96 h-56 object-cover' src={`../../backend/uploads/${image._id}`} alt={project.title} /> */}
+
+                        {imageUrl && (
+                          <div>
+                            <img className='lg:w-96 h-56 object-cover' src={imageUrl} alt={project.title} />
+                          </div>
+                        )}
                       
 
                         {/* <div className="transition duration-300 ease-in-out hover:-translate-y-4"> */}

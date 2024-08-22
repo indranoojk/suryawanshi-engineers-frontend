@@ -1,6 +1,10 @@
 import React from 'react'
+import useScrollToTop from './useScrollToTop'
 
 const InteriorDesign = () => {
+
+  useScrollToTop();
+
   return (
     <>
         <div className=''>

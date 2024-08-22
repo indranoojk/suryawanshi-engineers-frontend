@@ -33,17 +33,15 @@ const ProjectEdit = (props) => {
   
   const [project, setProject] = useState({title: "", description: "", content: ""})
 
-  const [img, setImg] = useState("");
-
-  const formdata = new FormData();
-  formdata.append("image", img);
+  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState(null);
     
   const onChange = (e)=> {
       setProject({...project, [e.target.name]: e.target.value})
   }
 
   const onImageChange = (e)=> {
-    setImg(e.target.files[0]);
+    setImage(e.target.files[0]);
   }
 
     const handleSubmit = async (e)=> {
@@ -52,22 +50,30 @@ const ProjectEdit = (props) => {
         addProject(project.title, project.description, project.content);
         setProject({title: "", description: "", content: ""})
 
-        const response = await fetch(`${baseUrl}/api/image/upload`, {
-          method: "POST",
-          headers: {
-            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", 
-          },
-          body: formdata,
-        }).then((res) => {
-          console.log(res.msg);
-        })
-        .catch((err) => {
-          console.log("Error uploading image: ", err);
-        });
+        
+        const formData = new FormData();
+        formData.append("image", image);
 
-        setImg("");
+        try {
+          const response = await fetch(`${baseUrl}/api/images/upload`, formData, {  
+            method: "POST",
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              // "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo", 
+            },
+          }).then((res) => {
+            console.log(res.msg);
+          })
 
+          setImageUrl(response.data.imageId);
+        } catch (error) {
+          console.log("Error uploading image: ", error);
+        };
+        
 
+        setImage("");
+
+        
         Swal.fire({
             title: 'Success!',
             text: 'Project added successfully!',

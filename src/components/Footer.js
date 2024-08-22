@@ -20,16 +20,16 @@ const Footer = () => {
             </div>
             <div className='-mt-6 ml-4 lg:ml-0 lg:col-start-2 lg:mt-4'>
               <ul className='font-serif'>
-                  <li className='p-2 text-xl'>
+                  <li className='p-2 text-xl hover:text-purple-500'>
                     <Link to='/'>Home</Link>
                   </li>
-                  <li className='p-2 text-xl'>
+                  <li className='p-2 text-xl hover:text-purple-500'>
                     <Link to='/about'>About Us</Link>
                   </li>
-                  <li className='p-2 text-xl'>
+                  <li className='p-2 text-xl hover:text-purple-500'>
                     <Link to='/contact'>Contact</Link>
                   </li>
-                  <li className='p-2 text-xl'>
+                  <li className='p-2 text-xl hover:text-purple-500'>
                     <Link to='/projects'>Projects</Link>
                   </li>
               </ul>

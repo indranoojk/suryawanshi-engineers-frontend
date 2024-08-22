@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import RegistrationForm from './RegistrationForm'
 import ContractState from '../context/contract/ContractState'
+import useScrollToTop from './useScrollToTop'
 
 const Home = () => {
 
+    // useScrollToTop();
 
   return (
     <>
@@ -14,14 +16,15 @@ const Home = () => {
         </div>
 
         {/* Intro content */}
-        <div className='flex flex-col lg:flex-row mb-16 bg-[#e1dfdd]'>
-                <div className='w-full p-10'>
+        <div className='flex flex-col lg:flex-row mb-16'>
+                <div className='w-full p-10 bg-[#e1dfdd]'>
                     <h1 className='text-4xl font-serif font-bold text-[#ad998a] mb-2'>Crafting Your Dream Spaces</h1>
                     <p className='text-lg lg:w-96 text-[#a58a75] '>At Suywawanshi Engineers, we're more than just builders. We're creators, innovators, and problem solvers dedicated to bringing your vision to life. Whether you're dreaming of a modern, sleek office space, a cozy and inviting home, or a cutting-edge commercial development, our team of experts is here to turn your ideas into reality.</p>
                 </div>
                 
                 <div className=''>
                     <img className='w-full h-full' src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
+                    {/* <img className='w-full h-full' src="https://images.pexels.com/photos/2036686/pexels-photo-2036686.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" /> */}
                 </div>
         </div>
 

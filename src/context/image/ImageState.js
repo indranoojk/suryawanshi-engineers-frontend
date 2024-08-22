@@ -37,10 +37,10 @@ const ImageState = (props) => {
             const response = await fetch(`${baseUrl}/api/image/${id}`, {
                 method: "GET",
                 headers: {
-                  "Content-Type": "application/json",
                   "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJpZCI6IjY1YzI4YzAwZTkxYzMxNDY5MTNlNDliNyJ9LCJpYXQiOjE3MTMzNTM2ODV9.hm7rLEbk0sRcj5uNwOWRnRcYwCpvLUB4vy7ssJ_zueo",
                 },
               });
+              
               const imageData = await response.blob();
               const imageObjectURL = URL.createObjectURL(imageData);
               setImages(imageObjectURL);

@@ -6,6 +6,8 @@ import { baseUrl } from '../Urls'
 
 const Signup = (props) => {
 
+    useScrollToTop();
+
     let navigate = useNavigate();
     const [credentials, setCredentials] = useState({name: "", email: "", password: ""})
 

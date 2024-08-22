@@ -6,8 +6,11 @@ import PlainNav from './PlainNav'
 import Sidebar from './Sidebar/Sidebar'
 import stars from '../assets/images/stars.png'
 import { motion, useScroll, useTransform } from "framer-motion";
+import useScrollToTop from './useScrollToTop'
 
 const Contract = (props) => {
+
+  useScrollToTop();
 
   const ref = useRef()
 

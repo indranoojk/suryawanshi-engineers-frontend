@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import projectContext from "../context/project/projectContext"
 import ProjectItem from './ProjectItem';
+import useScrollToTop from './useScrollToTop';
 // import { useNavigate } from 'react-router-dom'
 
 
 const Projects = (props) => {
+
+    useScrollToTop();
 
     const context = useContext(projectContext)
     const { projects, getProjects } = context;

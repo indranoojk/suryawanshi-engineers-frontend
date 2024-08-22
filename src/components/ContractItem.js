@@ -42,7 +42,7 @@ const ContractItem = (props) => {
     <>
         <div className='grid-flow-row'>
           <div className='lg:m-16'>
-            <div className={"card-body lg:w-[80%] border-2 border-black p-8 rounded-xl shadow-md shadow-black space-y-1 bg-gray-300 overflow-x-scroll"}>
+            <div className={"card-body lg:w-[80%] border-2 border-black p-8 rounded-xl shadow-md shadow-black space-y-1 bg-gray-300 container mx-auto"}>
               <div className="float-right">
                 <i className="fa-solid fa-trash-can mx-2" onClick={handleDelete}>   <span className='ml-1 text-red-600'>Delete</span> </i>
               </div>

@@ -1,8 +1,12 @@
 import React from 'react'
 // import Founder from './Founder'
 import founder from '../assets/images/founder.png'
+import useScrollToTop from './useScrollToTop'
 
 const About = () => {
+
+  useScrollToTop();
+
   return (
     <>
       {/* <div className='relative'>

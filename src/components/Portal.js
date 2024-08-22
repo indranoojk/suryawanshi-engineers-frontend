@@ -3,8 +3,12 @@ import Sidebar from './Sidebar/Sidebar'
 import PlainNav from './PlainNav'
 import {motion} from 'framer-motion';
 import waves from '../assets/images/beach waves.png'
+import useScrollToTop from './useScrollToTop';
 
 const Portal = () => {
+
+  useScrollToTop();
+
   const height = (i) => ( {
     height: ['100%', '0%', '100%'],
     transition: { duration: 3, repeat: Infinity, delay: i*0.5 },
