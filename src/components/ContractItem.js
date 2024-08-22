@@ -42,12 +42,12 @@ const ContractItem = (props) => {
     <>
         <div className='grid-flow-row'>
           <div className='lg:m-16'>
-            <div className={"card-body lg:w-[80%] border-2 border-black p-8 rounded-xl shadow-md shadow-black space-y-1 bg-gray-300 container mx-auto"}>
+            <div className={`card-body lg:w-[80%] border-2 border-black p-2 lg:p-8 rounded-xl shadow-md shadow-black space-y-1 bg-gray-300 container mx-auto`}>
               <div className="float-right">
                 <i className="fa-solid fa-trash-can mx-2" onClick={handleDelete}>   <span className='ml-1 text-red-600'>Delete</span> </i>
               </div>
 
-              <h2 className='text-2xl font-bold'>Name: <span className='text-2xl font-extralight lg:font-medium lg:ml-40'>{contract.firstname} {contract.lastname}</span></h2>
+              <h2 className='pt-6 text-2xl font-bold'>Name: <span className='text-2xl font-extralight lg:font-medium lg:ml-40'>{contract.firstname} {contract.lastname}</span></h2>
 
               <h2 className='text-2xl font-bold'>Email id: <span className='text-2xl font-extralight lg:font-medium lg:ml-36'>{contract.email} </span></h2>
 

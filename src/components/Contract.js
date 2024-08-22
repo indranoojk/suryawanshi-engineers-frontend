@@ -44,12 +44,12 @@ const Contract = (props) => {
 
       <Sidebar />
 
-      <div className="text-xl lg:text-3xl ml-10 lg:ml-0 mt-4 font-semibold italic font-serif text-center">
+      <div className="text-xl lg:text-3xl ml-10 lg:ml-0 mt-36 lg:mt-4 font-semibold italic font-serif text-center">
         Hello! Mr. Suryawanshi
       </div>
 
       <div className="bg-[#0c0c1d]">
-        <div className='m-16 mb-0 pb-40 relative'>
+        <div className='m-4 lg:m-16 mb-0 pb-40 relative'>
           <div className='text-5xl p-4 font-bold font-serif text-white '>
             Contracts
           </div>

@@ -52,7 +52,7 @@ const RegistrationForm = (props) => {
         
         if (!phone) {
             errors.phone = 'Phone number is required';
-        } else if (phone.length != 10) {
+        } else if (phone.length !== 10) {
             errors.phone = 'Phone number must be 10 digits';
           }
 
