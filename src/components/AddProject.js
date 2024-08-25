@@ -38,7 +38,7 @@ const AddProject = (props) => {
     let formData = new FormData();
     formData.append('project', image);
 
-    await fetch(`http://localhost:5001/api/project/images/upload`, {
+    await fetch(`${baseUrl}/api/project/images/upload`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -49,7 +49,7 @@ const AddProject = (props) => {
 
     if (dataObj.success) {
       project.image = dataObj.image_url;
-      await fetch(`http://localhost:5001/api/project/addproject`, {
+      await fetch(`${baseUrl}/api/project/addproject`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -62,7 +62,7 @@ const AddProject = (props) => {
 
     }
   } catch (error) {
-    alert("Failed to upload project beacuse" + error);
+    alert("Failed to upload project beacuse " + error);
   }
 
     // Swal.fire({
@@ -121,7 +121,7 @@ const AddProject = (props) => {
                 <br />
 
                 <div>
-                    <button disabled={ projectDetails.title.length<3 || projectDetails.description.length<5 || projectDetails.content.length<15 } type='submit' className='bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-20 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue' onClick={() => { AddProject() }}> SUBMIT </button>
+                    <button disabled={ projectDetails.title.length<3 || projectDetails.description.length<5 || projectDetails.content.length<15 || projectDetails.image === null} type='submit' className='bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-20 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue' onClick={() => { AddProject() }}> SUBMIT </button>
                 </div>              
                 
             </div>  

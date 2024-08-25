@@ -11,7 +11,7 @@ const ProjectEdit = (props) => {
   const [allprojects, setAllProjects] = useState([]);
 
   const fetchInfo = () => {
-    fetch(`http://localhost:5001/api/project/allprojects`)
+    fetch(`${baseUrl}/api/project/allprojects`)
       .then((res) => res.json())
       .then((data) => setAllProjects(data))
   }
@@ -39,7 +39,7 @@ const ProjectEdit = (props) => {
           confirmButtonText: "OK"
         })
       
-        await fetch(`http://localhost:5001/api/project/deleteproject`, {
+        await fetch(`${baseUrl}/api/project/deleteproject`, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
