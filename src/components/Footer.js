@@ -6,7 +6,7 @@ const Footer = () => {
 
   let location = useLocation();
 
-  if (location.pathname === "/contract"  || location.pathname === "/login"  || location.pathname === "/Login"  || location.pathname === "/portal" || location.pathname === "/projectEdit" || location.pathname === "/changePass") {
+  if (location.pathname === "/contract"  || location.pathname === "/login"  || location.pathname === "/Login"  || location.pathname === "/portal" || location.pathname === "/addProject" || location.pathname === "/projectEdit" || location.pathname === "/changePass") {
     return null;
   }
 

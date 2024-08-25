@@ -20,6 +20,7 @@ import ProjectEdit from './components/ProjectEdit';
 import ChangePass from './components/ChangePass';
 import ProjectState from './context/project/ProjectState';
 import ProjectExpanded from './components/ProjectExpanded';
+import AddProject from './components/AddProject';
 // import Signup from './components/Signup';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
               {/* <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} /> */}
               <Route exact path='/portal' element={<Portal />} />
               <Route exact path='/contract' element={<Contract />} />
+              <Route exact path='/addProject' element={<AddProject />} />
               <Route exact path='/projectEdit' element={<ProjectEdit />} />
               <Route exact path='/changePass' element={<ChangePass />} />
             </Routes>

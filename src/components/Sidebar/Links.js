@@ -57,10 +57,15 @@ const Links = () => {
             whileTap={{ scale: 0.95 }}
             className="text-2xl font-medium">Contracts</Link>
 
+        <Link to="/addProject" variants={itemsVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-2xl font-medium">Add Project</Link>
+
         <Link to="/projectEdit" variants={itemsVariants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="text-2xl font-medium">Project</Link>
+            className="text-2xl font-medium">Edit Projects</Link>
 
         <Link to="/changePass" variants={itemsVariants}
             whileHover={{ scale: 1.1 }}

@@ -8,7 +8,7 @@ const ChangePass = () => {
       <PlainNav />
       <Sidebar />
 
-      <div className="text-xl lg:text-3xl ml-10 lg:ml-0 mt-4 font-semibold italic font-serif text-center">
+      <div className="text-xl lg:text-3xl ml-10 lg:ml-0 mt-36 lg:mt-4 font-semibold italic font-serif text-center">
             Hello! Mr. Suryawanshi
         </div>
 
