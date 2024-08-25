@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <ContractState>
-        <ProjectState>
+        {/* <ProjectState> */}
           <Router>
             <Navbar />
             <Routes>
@@ -51,7 +51,7 @@ function App() {
           </Router>
 
         {/* <Contract /> */}
-        </ProjectState>
+        {/* </ProjectState> */}
       </ContractState>
       
     </>
