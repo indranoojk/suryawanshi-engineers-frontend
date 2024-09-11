@@ -32,7 +32,7 @@ const Home = () => {
         {/* Our Services section */}
         <div className='m-4 lg:m-16'>
             <h2 className='text-3xl font-bold font-serif'>Our Services</h2>
-            <div className='grid grid-flow-row-dense grid-cols-2 grid-rows-2 lg:flex lg:space-x-1'>
+            <div className='grid grid-flow-row-dense grid-cols-2 grid-rows-3 lg:flex lg:space-x-1'>
                 <div className='relative col-span-4 cursor-pointer'>
                     <Link to="/CustomHouseBuilding">
                         <img className='lg:p-1 lg:rounded-lg lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e]' src="https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
@@ -43,25 +43,25 @@ const Home = () => {
                 </div>
                 <div className='relative col-span-2 cursor-pointer'>
                     <Link to="/CommercialConstruction">
-                        <img className='lg:p-1 lg:rounded-lg w-[176px] h-[150px] lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e]' src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
-                        <div className='absolute w-fit lg:bottom-1 bg-[#e5e5e5] rounded lg:ml-1'>
+                        <img className='lg:p-1 lg:rounded-lg w-[176px] h-full lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e]' src="https://images.pexels.com/photos/6492403/pexels-photo-6492403.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
+                        <div className='absolute w-fit bottom-1 bg-[#e5e5e5] rounded ml-1'>
                             <h2 className='text-sm lg:text-xl px-1'><span className='text-2xl bg-black'></span>Commercial Construction</h2>
                         </div>
                     </Link>
                 </div>
                 <div className='relative col-span-2 cursor-pointer'>
                     <Link to="/RenovationsAndRemodeling">
-                        <img className='lg:p-1 lg:rounded-lg w-[176px] h-[150px] lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e]' src="https://images.pexels.com/photos/5481512/pexels-photo-5481512.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
-                        <div className='absolute w-fit lg:bottom-1 bg-[#e5e5e5] rounded lg:ml-1'>
+                        <img className='lg:p-1 lg:rounded-lg w-[176px] h-full lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e]' src="https://images.pexels.com/photos/5481512/pexels-photo-5481512.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
+                        <div className='absolute w-fit mx-1 lg:mx-0 bottom-1 bg-[#e5e5e5] rounded lg:ml-1'>
                             <h2 className='text-sm lg:text-xl px-1'><span className='text-2xl bg-black'></span>Renovations and Remodeling</h2>
                         </div>
                     </Link>
                 </div>
-                <div className='relative hidden lg:block cursor-pointer'>
+                <div className='relative col-span-4 row-start-3 cursor-pointer '>
                     <Link to="/InteriorDesign">
-                        <img className='lg:p-1 lg:rounded-lg lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e]' src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
-                        <div className='absolute w-fit lg:bottom-1 bg-[#e5e5e5] rounded ml-1'>
-                            <h2 className='text-xl px-1'><span className='text-2xl bg-black'></span>Interior Design</h2>
+                        <img className='lg:p-1 lg:rounded-lg lg:w-[300px] lg:h-[280px] object-cover lg:hover:shadow-md lg:hover:shadow-[#8f8e8e] ' src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="" />
+                        <div className='absolute w-fit bottom-1 bg-[#e5e5e5] rounded ml-1'>
+                            <h2 className='text-lg lg:text-xl px-1'><span className='text-2xl bg-black'></span>Interior Design</h2>
                         </div>
                     </Link>
                 </div>

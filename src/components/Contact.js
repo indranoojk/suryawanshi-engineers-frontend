@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/images/Suryawanshi poster.png'
-import Projects from './Projects'
+import Projects from '../pages/Project'
 import useScrollToTop from './useScrollToTop'
 
 const Contact = () => {

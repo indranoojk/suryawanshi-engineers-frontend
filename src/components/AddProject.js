@@ -31,38 +31,38 @@ const AddProject = (props) => {
   const [image, setImage] = useState(false);
 
   const AddProject = async () => {
-    try{
-    let dataObj;
-    let project = projectDetails;
+    try {
+        let dataObj;
+        let project = projectDetails;
 
-    let formData = new FormData();
-    formData.append('project', image);
+        let formData = new FormData();
+        formData.append('project', image);
 
-    await fetch(`${baseUrl}/api/project/images/upload`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-      },
-      body: formData,
-    }).then((resp) => resp.json())
-      .then((data) => { dataObj = data })
-
-    if (dataObj.success) {
-      project.image = dataObj.image_url;
-      await fetch(`${baseUrl}/api/project/addproject`, {
+        await fetch(`${baseUrl}/api/project/images/upload`, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+            Accept: 'application/json',
         },
-        body: JSON.stringify(project),
-      })
-        .then((resp) => resp.json())
-        .then((data) => { data.success ? alert("Project Added") : alert("Failed") });
+        body: formData,
+        }).then((resp) => resp.json())
+        .then((data) => { dataObj = data })
 
-    }
+        if (dataObj.success) {
+        project.image = dataObj.image_url;
+        await fetch(`${baseUrl}/api/project/addproject`, {
+            method: 'POST',
+            headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(project),
+        })
+            .then((resp) => resp.json())
+            .then((data) => { data.success ? alert("Project Added") : alert("Failed") });
+
+        }
   } catch (error) {
-    alert("Failed to upload project beacuse " + error);
+    alert("Failed to upload project because " + error);
   }
 
     // Swal.fire({

@@ -10,7 +10,6 @@ import CommercialConstruction from './components/CommercialConstruction';
 import RenovationsAndRemodeling from './components/RenovationsAndRemodeling';
 import InteriorDesign from './components/InteriorDesign';
 import Footer from './components/Footer';
-import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import ContractState from './context/contract/ContractState';
@@ -19,8 +18,10 @@ import Portal from './components/Portal';
 import ProjectEdit from './components/ProjectEdit';
 import ChangePass from './components/ChangePass';
 import ProjectState from './context/project/ProjectState';
-import ProjectExpanded from './components/ProjectExpanded';
 import AddProject from './components/AddProject';
+import Project from './pages/Project';
+import Popular from './components/Popular';
+import ProjectCollection from './components/ProjectCollection';
 // import Signup from './components/Signup';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
   return (
     <>
       <ContractState>
-        {/* <ProjectState> */}
+        <ProjectState>
           <Router>
             <Navbar />
             <Routes>
@@ -38,8 +39,10 @@ function App() {
               <Route exact path='/CommercialConstruction' element={<CommercialConstruction />} />
               <Route exact path='/RenovationsAndRemodeling' element={<RenovationsAndRemodeling />} />
               <Route exact path='/InteriorDesign' element={<InteriorDesign />} />
-              <Route exact path='/projects' element={<Projects />} />
-              <Route exact path='/projectExpanded' element={<ProjectExpanded />} />
+              <Route exact path='/projectCollection' element={<ProjectCollection />} />
+              <Route exact path='/projects' element={<Popular />} />
+              <Route exact path='/project' element={<Project />} />
+                <Route exact path=':projectId' element={<Project />} />
               <Route exact path='/contact' element={<Contact />} />
               <Route exact path='/login' element={<Login />} />
               {/* <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} /> */}
@@ -52,8 +55,7 @@ function App() {
             <Footer />
           </Router>
 
-        {/* <Contract /> */}
-        {/* </ProjectState> */}
+        </ProjectState>
       </ContractState>
       
     </>
