@@ -1,1 +1,1 @@
-export const baseUrl = `https://suryawanshi-engineers-backend.onrender.com/`
+export const baseUrl = `https://suryawanshi-engineers-backend.onrender.com`
