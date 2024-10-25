@@ -31,7 +31,6 @@ const AddProject = (props) => {
   const [image, setImage] = useState(false);
 
   const AddProject = async () => {
-    try {
         let dataObj;
         let project = projectDetails;
 
@@ -61,9 +60,10 @@ const AddProject = (props) => {
             .then((data) => { data.success ? alert("Project Added") : alert("Failed") });
 
         }
-  } catch (error) {
-    alert("Failed to upload project because " + error);
-  }
+  
+  //  catch (error) {
+  //   alert("Failed to upload project because " + error);
+  // }
 
     // Swal.fire({
     //           title: 'Success!',

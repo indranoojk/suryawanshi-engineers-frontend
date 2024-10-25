@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import useScrollToTop from './useScrollToTop';
 import { useParams } from 'react-router-dom'
 import { baseUrl } from '../Urls';
+import Breadcrums from './Breadcrums';
 
 const ProjectDisplay = ({project}) => { 
   
