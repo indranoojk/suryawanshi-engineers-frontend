@@ -41,8 +41,7 @@ function App() {
               <Route exact path='/InteriorDesign' element={<InteriorDesign />} />
               <Route exact path='/projectCollection' element={<ProjectCollection />} />
               <Route exact path='/projects' element={<Popular />} />
-              <Route exact path='/project' element={<Project />} />
-                <Route exact path=':projectId' element={<Project />} />
+              <Route exact path='/project/:id' element={<Project />} />
               <Route exact path='/contact' element={<Contact />} />
               <Route exact path='/login' element={<Login />} />
               {/* <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} /> */}

@@ -6,27 +6,46 @@ import projectContext from '../context/project/projectContext';
 import Breadcrums from '../components/Breadcrums';
 import ProjectDisplay from '../components/ProjectDisplay';
 
-const Project = ({ projectId }) => {
+const Project = () => {
 
     useScrollToTop();
 
+    const {id} = useParams();
     const context = useContext(projectContext);
     const { projects } = context;
-    // const {projectId} = useParams();
-    // const [project, setProject] = useState(false);
+    const [projectData, setProjectData] = useState(false);
+    const [image, setImage] = useState('')
 
-    const project = projects.find((e) => e.id === Number(projectId));
-    // useEffect(() => {
-    //     setProject(projects.find((e)=>e.id === Number(projectId)))
-    //   },[projects,projectId]
-    // )
+    // const project = projects.find((e) => e.id === Number(projectId));
 
-  return (
+
+    const fetchProjectData = async() => {
+      projects.map((item)=> {
+        if (item.id === id) {
+          setProjectData(item);
+          setImage(item.image)
+          console.log(item._id);
+          return null;
+        }
+      })
+    }
+
+    useEffect(() => {
+        fetchProjectData();
+      },[id, projects]
+    )
+
+  return projectData ? (
     <>
-        <Breadcrums project={project} />
-        <ProjectDisplay project={project} />
+        <div>
+
+        </div>
+        {/* <Breadcrums project={project} />
+        <ProjectDisplay project={project} /> */}
     </>
-  )
+  ) : <div className='opacity-0'>
+
+  </div>
 }
 
 export default Project

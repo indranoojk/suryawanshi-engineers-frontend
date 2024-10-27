@@ -5,36 +5,38 @@ import ProjectItem from './ProjectItem';
 import projectContext from '../context/project/projectContext';
 
 const Popular = (props) => {
-    
+
     useScrollToTop();
 
     const context = useContext(projectContext);
-    const { projects }  = context;
-    
-  return (
-    <>
-      <div className='my-10 mx-5 lg:mx-16'>
-                <h2 className='text-5xl font-bold font-serif'>Projects</h2>
-            </div>
-            <div className="flex flex-col mx-4 lg:mx-16 mb-20">
+    const { projects } = context;
 
-                <div className={`${projects.length === 0 ? "block" : "hidden"} text-4xl text-red-600 mt-16 font-serif font-bold text-center`}>
-                    {'Projects under construction...'}
+    return (
+        <>
+            <div className="bg-black pb-20 pt-1 lg:pt-10">
+                <div className='my-10 mx-5 lg:mx-16'>
+                    <h2 className='text-5xl font-bold font-serif text-white'>Projects</h2>
                 </div>
+                <div className="flex flex-col mx-4 lg:mx-16 mb-20">
 
-                {/* {projects.map((project) => {
+                    <div className={`${projects.length === 0 ? "block" : "hidden"} text-4xl text-red-600 mt-16 font-serif font-bold text-center`}>
+                        {'Projects under construction...'}
+                    </div>
+
+                    {/* {projects.map((project) => {
                     return <ProjectItem key={project._id} project={project} />
                 })} */}
-                <div className="flex flex-wrap">
-                    {projects.map((project, index) => {
-                        return <ProjectItem id={project.id} key={index} title={project.title} description={project.description} image={project.image} />
-                    })}
+                    <div className="flex flex-wrap justify-center">
+                        {projects.map((project, index) => {
+                            return <ProjectItem id={project.id} key={index} title={project.title} description={project.description} image={project.image} />
+                        })}
+                    </div>
+
+
                 </div>
-
-
             </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default Popular
