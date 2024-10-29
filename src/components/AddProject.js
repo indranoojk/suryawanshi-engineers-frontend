@@ -77,26 +77,26 @@ const AddProject = () => {
         Hello! Mr. Suryawanshi
       </div>
       <form onSubmit={handleAddProject}>  {/* Attach event handler to form submission */}
-        <div className="bg-[#393839] p-5 text-white lg:flex pb-10">
+        <div className="p-5 text-white lg:flex pb-10"  style={{backgroundImage: `url(${'https://images.pexels.com/photos/19453624/pexels-photo-19453624/free-photo-of-high-line.jpeg?auto=compress&cs=tinysrgb&w=1280'})`, objectFit: 'contain'}}  >
           <h2 style={{ fontFamily: "'Cinzel', serif" }} className="text-4xl font-bold font-serif w-48 m-20 text-opacity-85">
             ADD A PROJECT
           </h2>
           <div className="m-4 lg:m-10 lg:ml-20 lg:grid lg:grid-cols-2">
             {/* Input fields and labels */}
             <div className="mb-3 lg:m-2">
-              <label htmlFor="title" className="text-xs lg:text-base text-[#9e8a5f]">TITLE*</label>
+              <label htmlFor="title" className="text-xs lg:text-base font-semibold text-[#dad1bf]">TITLE*</label>
               <input type="text" className="input-class mt-0 block w-full lg:w-80 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400" id="title" name="title" value={projectDetails.title} onChange={changeHandler} required />
             </div>
             <div className="mb-3 lg:m-2">
-              <label htmlFor="description" className="text-xs lg:text-base text-[#9e8a5f]">Project Type*</label>
+              <label htmlFor="description" className="text-xs lg:text-base font-semibold text-[#dad1bf]">Project Type*</label>
               <input type="text" className="input-class mt-0 block w-full lg:w-80 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400" id="description" name="description" value={projectDetails.description} onChange={changeHandler} required />
             </div>
             <div className="mb-3 lg:m-2 row-span-2">
-              <label htmlFor="content" className="text-xs lg:text-base text-[#9e8a5f]">Project Content*</label>
+              <label htmlFor="content" className="text-xs lg:text-base font-semibold text-[#dad1bf]">Project Content*</label>
               <textarea className="input-class mt-0 block w-full px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400" name="content" id="content" value={projectDetails.content} onChange={changeHandler} cols="30" rows="5" required />
             </div>
             <div className="mb-3 lg:m-2 row-span-2">
-              <p className="text-xs lg:text-base text-[#9e8a5f]">Select Image*</p>
+              <p className="text-xs lg:text-base font-semibold text-[#dad1bf]">Select Image*</p>
               <label htmlFor="image">
                 <img className="p-2 w-48 h-32 object-contain" src={!image ? upload_area : URL.createObjectURL(image)} alt="" />
               </label>
