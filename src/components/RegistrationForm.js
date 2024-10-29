@@ -94,7 +94,7 @@ const RegistrationForm = (props) => {
 
             Swal.fire({
                 title: 'Success!',
-                text: 'Form successfully submitted!',
+                text: 'Form submitted successfully!',
                 icon: 'success',
                 confirmButtonText: 'OK'
             })

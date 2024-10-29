@@ -92,7 +92,7 @@ const ProjectEdit = (props) => {
                 {allprojects.map((e, index) => (
                   <tr key={index} className='text-center'>
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>
-                      <img className='w-28 lg:ml-16 lg:w-48 object-contain rounded-md' src={baseUrl + e.image} alt="" />
+                      <img className='w-28 lg:w-48 object-contain rounded-md' src={baseUrl + e.image} alt="" />
                     </td>
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>{e.title}</td>
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>{e.description}</td>
