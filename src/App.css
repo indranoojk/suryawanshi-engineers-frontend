@@ -52,3 +52,7 @@ body {
     padding-top: 0px;
   }
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -1,50 +1,53 @@
 import React, { useState, useContext, useEffect } from 'react'
 import useScrollToTop from '../components/useScrollToTop';
 import { useParams } from 'react-router-dom'
-import { baseUrl } from '../Urls';
+// import { baseUrl } from '../Urls';
 import projectContext from '../context/project/projectContext';
 import Breadcrums from '../components/Breadcrums';
 import ProjectDisplay from '../components/ProjectDisplay';
+import RelatedProjects from '../components/RelatedProjects';
 
 const Project = () => {
 
     useScrollToTop();
 
-    const {id} = useParams();
-    const context = useContext(projectContext);
-    const { projects } = context;
-    const [projectData, setProjectData] = useState(false);
-    const [image, setImage] = useState('')
+    const {projects} = useContext(projectContext);
+    const { id } = useParams();
+    const [project, setProject] = useState(false);
+
+
+    useEffect(()=>{
+      setProject(projects.find((e)=>e.id === Number(id)))
+    },[projects,id])
 
     // const project = projects.find((e) => e.id === Number(projectId));
 
 
-    const fetchProjectData = async() => {
-      projects.map((item)=> {
-        if (item.id === id) {
-          setProjectData(item);
-          setImage(item.image)
-          console.log(item._id);
-          return null;
-        }
-      })
-    }
+    // const fetchProjectData = async() => {
+    //   projects.map((item)=> {
+    //     if (item.id === id) {
+    //       setProject(item);
+    //       console.log(item._id);
+    //       return null;
+    //     }
+    //   })
+    // }
 
-    useEffect(() => {
-        fetchProjectData();
-      },[id, projects]
-    )
+    // useEffect(() => {
+    //     fetchProjectData();
+    //   },[id, projects]
+    // )
 
-  return projectData ? (
+  return project ? (
     <>
         <div>
-
+          <Breadcrums project={project} />
+          <ProjectDisplay project={project} />
+          <RelatedProjects id={project.id} />
         </div>
-        {/* <Breadcrums project={project} />
-        <ProjectDisplay project={project} /> */}
     </>
-  ) : <div className='opacity-0'>
-
+  ) : <div className='m-16 text-4xl text-center font-bold text-red-500'>
+        "Project Details Not Available"
   </div>
 }
 

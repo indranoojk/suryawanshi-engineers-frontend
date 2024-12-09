@@ -22,6 +22,8 @@ import AddProject from './components/AddProject';
 import Project from './pages/Project';
 import Popular from './components/Popular';
 import ProjectCollection from './components/ProjectCollection';
+import RelatedProjects from './components/RelatedProjects';
+import CarouselItem from './components/CarouselItem';
 // import Signup from './components/Signup';
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
               <Route exact path='/addProject' element={<AddProject />} />
               <Route exact path='/projectEdit' element={<ProjectEdit />} />
               <Route exact path='/changePass' element={<ChangePass />} />
+              <Route exact path='/relatedProjects' element={<RelatedProjects />} />
+              <Route exact path='/carouselItem' element={<CarouselItem />} />
             </Routes>
             <Footer />
           </Router>

@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PlainNav from './PlainNav'
 import Sidebar from './Sidebar/Sidebar'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import cross_icon from "../assets/images/cross_icon.png";
 import Swal from 'sweetalert2'
 import { baseUrl } from "../Urls";
@@ -76,14 +76,14 @@ const ProjectEdit = (props) => {
         Hello! Mr. Suryawanshi
       </div>
 
-      <div className="m-4 lg:m-20">
-        <h1 className='text-2xl lg:text-4xl font-bold font-serif'>All Projects List</h1>
+      <div className="m-2 lg:m-20">
+        <h1 className='pt-10 lg:pt-0 text-2xl lg:text-4xl font-bold font-serif'>All Projects List</h1>
           <table className='mx-2 my-6 lg:mx-8 lg:my-4 drop-shadow-lg shadow-md shadow-slate-600 lg:w-full'>
               <thead className='p-1 lg:p-2'>
                 <tr>
                   <th className='border border-black p-1 lg:p-2'>Projects</th>
                   <th className='border border-black p-1 lg:p-2'>Title</th>
-                  <th className='border border-black p-1 lg:p-2'>Description</th>
+                  <th className='border border-black p-1 lg:p-2'>Project Type</th>
                   <th className='border border-black p-1 lg:p-2'>Content</th>
                   <th className='border border-black p-1 lg:p-2 text-red-600'>Remove</th>
                 </tr>
@@ -97,8 +97,8 @@ const ProjectEdit = (props) => {
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>{e.title}</td>
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>{e.description}</td>
                     <td className='lg:px-8 border border-black p-1 w-28 lg:p-2 lg:w-96'>{e.content}</td>
-                    <td className='lg:px-8 border border-black p-1 lg:p-2'>
-                      <img className='cursor-pointer lg:ml-4' src={cross_icon} alt="" onClick={() => { removeProject(e.id) }} />
+                    <td className='px-6 lg:px-10 text-center border border-black p-1 lg:p-2'>
+                      <img className='cursor-pointer' src={cross_icon} alt="" onClick={() => { removeProject(e.id) }} />
                     </td>
                     <hr />
                   </tr>

@@ -3,7 +3,6 @@ import PlainNav from './PlainNav';
 import Sidebar from './Sidebar/Sidebar';
 import upload_area from "../assets/images/upload_area.svg";
 import { baseUrl } from "../Urls";
-import Swal from 'sweetalert2'
 
 const AddProject = () => {
   const [projectDetails, setProjectDetails] = useState({
@@ -84,7 +83,7 @@ const AddProject = () => {
           <div className="m-4 lg:m-10 lg:ml-20 lg:grid lg:grid-cols-2">
             {/* Input fields and labels */}
             <div className="mb-3 lg:m-2">
-              <label htmlFor="title" className="text-xs lg:text-base font-semibold text-[#dad1bf]">TITLE*</label>
+              <label htmlFor="title" className="text-xs lg:text-base font-semibold text-[#dad1bf]">Title*</label>
               <input type="text" className="input-class mt-0 block w-full lg:w-80 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400" id="title" name="title" value={projectDetails.title} onChange={changeHandler} required />
             </div>
             <div className="mb-3 lg:m-2">

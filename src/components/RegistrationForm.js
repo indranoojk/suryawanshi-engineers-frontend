@@ -190,12 +190,13 @@ const RegistrationForm = (props) => {
 
   return (
     <>
-        <div className="p-5 text-white lg:flex pb-10" style={{backgroundImage: `url(${'https://images.pexels.com/photos/7078398/pexels-photo-7078398.jpeg?auto=compress&cs=tinysrgb&w=1280'})`}} >
+        {/* <div className="p-5 text-white lg:flex pb-10" style={{backgroundImage: `url(${'https://images.pexels.com/photos/7078398/pexels-photo-7078398.jpeg?auto=compress&cs=tinysrgb&w=1280'})`}} > */}
+        <div className="p-5 text-white font-medium lg:flex pb-10" style={{backgroundImage: `url(${'https://images.pexels.com/photos/3137052/pexels-photo-3137052.jpeg?auto=compress&cs=tinysrgb&w=1280'})`}} >
             <h2 style={{fontFamily: "'Cinzel', serif"}} className='text-4xl font-bold font-serif w-48 m-20 text text-opacity-85 -tracking-tighter text-black'>CONNECT WITH US TODAY</h2>
             <div className="m-4 lg:m-10 lg:ml-20 lg:grid lg:grid-cols-2 lg:gap-6">
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="firstname" className='text-sm text-black'>FIRST NAME*</label> <br/>
-                    <input type="text" className={`mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.firstname ? 'border-red-500' : ''} `} id='firstname' name='firstname' value={firstname} onChange={(e) => handleInputChange('firstname', e.target.value)} required/>
+                    <input type="text" className={`mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.firstname ? 'border-red-500' : ''} `} id='firstname' name='firstname' value={firstname} onChange={(e) => handleInputChange('firstname', e.target.value)} required/>
                     {errors.firstname && (
                         <p className="text-red-500 text-xs italic">{errors.firstname}</p>
                     )}
@@ -203,7 +204,7 @@ const RegistrationForm = (props) => {
 
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="lastname" className='text-sm text-black'>LAST NAME*</label> <br/>
-                    <input type="text" className={`mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.lastname ? 'border-red-500' : ''} `} id='lastname' name='lastname' value={lastname} onChange={(e) => handleInputChange('lastname', e.target.value)} required/>
+                    <input type="text" className={`mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.lastname ? 'border-red-500' : ''} `} id='lastname' name='lastname' value={lastname} onChange={(e) => handleInputChange('lastname', e.target.value)} required/>
                     {errors.lastname && (
                         <p className="text-red-500 text-xs italic">{errors.lastname}</p>
                     )}
@@ -211,7 +212,7 @@ const RegistrationForm = (props) => {
 
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="email" className='text-sm text-black'>EMAIL*</label> <br/>
-                    <input type="email" className={`mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''} `} id='email' name='email' value={email} onChange={(e) => handleInputChange('email', e.target.value)} required/>
+                    <input type="email" className={`mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''} `} id='email' name='email' value={email} onChange={(e) => handleInputChange('email', e.target.value)} required/>
                     {errors.email && (
                         <p className="text-red-500 text-xs italic">{errors.email}</p>
                     )}
@@ -219,7 +220,7 @@ const RegistrationForm = (props) => {
 
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="phone" className='text-sm text-black'>PHONE NO*</label> <br/>
-                    <input type="tel" className={`mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.phone ? 'border-red-500' : ''} `} id='phone' name='phone' value={phone} onChange={(e) => handleInputChange('phone', e.target.value)} maxLength={10} required/>
+                    <input type="tel" className={`mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.phone ? 'border-red-500' : ''} `} id='phone' name='phone' value={phone} onChange={(e) => handleInputChange('phone', e.target.value)} maxLength={10} required/>
                     {errors.phone && (
                         <p className="text-red-500 text-xs italic">{errors.phone}</p>
                     )}
@@ -242,7 +243,7 @@ const RegistrationForm = (props) => {
 
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="address" className='text-sm text-black'>PROJECT ADDRESS*</label> <br/>
-                    <input type="text" className={`mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.address ? 'border-red-500' : ''} `} id='address' name='address' value={address} onChange={(e) => handleInputChange('address', e.target.value)} required/>
+                    <input type="text" className={`mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.address ? 'border-red-500' : ''} `} id='address' name='address' value={address} onChange={(e) => handleInputChange('address', e.target.value)} required/>
                     {errors.address && (
                         <p className="text-red-500 text-xs italic">{errors.address}</p>
                     )}
@@ -250,7 +251,7 @@ const RegistrationForm = (props) => {
                 
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="city" className='text-sm text-black'>CITY*</label> <br/>
-                    <input type="text" className={`mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.city ? 'border-red-500' : ''} `} id='city' name='city' value={city} onChange={(e) => handleInputChange('city', e.target.value)} required/>
+                    <input type="text" className={`mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 focus:outline-none focus:shadow-outline ${errors.city ? 'border-red-500' : ''} `} id='city' name='city' value={city} onChange={(e) => handleInputChange('city', e.target.value)} required/>
                     {errors.city && (
                         <p className="text-red-500 text-xs italic">{errors.city}</p>
                     )}
@@ -328,7 +329,7 @@ const RegistrationForm = (props) => {
 
                 {/* <div className='mb-3 lg:m-2'>
                     <label htmlFor="length" className='text-sm text-black'>Length (in feet) *</label> <br/>
-                    <input type="number" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='length' name='length' value={firstname} onChange={(e) => setFirstname(e.target.value)} required/>
+                    <input type="number" className='mt-0 block w-full  px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400' id='length' name='length' value={firstname} onChange={(e) => setFirstname(e.target.value)} required/>
                 </div> */}
 
                 
