@@ -96,9 +96,9 @@ const ProjectEdit = (props) => {
                     </td>
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>{e.title}</td>
                     <td className='lg:px-8 border border-black p-1 lg:p-2'>{e.description}</td>
-                    <td><pre className='lg:px-8 border border-black p-1 w-28 lg:p-2 lg:w-96 text-wrap hidden lg:block'>{e.content}</pre></td>
+                    <td className='lg:px-8 border border-black p-1 w-28 lg:p-2 lg:w-96'><pre className='text-wrap text-start hidden lg:block'>{e.content}</pre></td>
                     <td className='px-6 lg:px-10 text-center border border-black p-1 lg:p-2'>
-                      <img className='cursor-pointer' src={cross_icon} alt="" onClick={() => { removeProject(e.id) }} />
+                      <img className='cursor-pointer' src={cross_icon} alt="Delete" onClick={() => { removeProject(e.id) }} />
                     </td>
                     <hr />
                   </tr>
