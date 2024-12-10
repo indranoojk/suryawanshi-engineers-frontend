@@ -337,7 +337,7 @@ const RegistrationForm = (props) => {
                 {/* <div className='mb-3 lg:m-2 row-span-2'> */}
                 <div className='mb-3 lg:m-2 row-span-2'>
                     <label htmlFor="query" className='text-sm text-black'>TELL US MORE ABOUT YOUR PROJECT</label> <br/>
-                    <textarea className={`mt-0 block w-full px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400`} name="query" id="query" value={query} onChange={(e) => handleInputChange('lastname', e.target.value)} cols="30" rows="5" ></textarea>
+                    <textarea className={`mt-0 block w-full px-0.5 bg-transparent text-slate-700 border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400`} name="query" id="query" value={query} onChange={(e) => handleInputChange('query', e.target.value)} cols="30" rows="5" ></textarea>
                 </div>
 
                 <br />
