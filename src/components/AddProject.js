@@ -21,6 +21,9 @@ const AddProject = () => {
       let project = projectDetails;
       let formData = new FormData();
       formData.append('image', image);
+      formData.append("title", projectDetails.title);
+      formData.append("description", projectDetails.description);
+      formData.append("content", projectDetails.content);
 
       // let response = await fetch(`${baseUrl}/api/project/images/upload`, {
       //   method: 'POST',
@@ -32,13 +35,13 @@ const AddProject = () => {
 
       // if (dataObj.success) {
         // project.image = dataObj.image_url;
-        let addProjectResponse = await fetch(`${baseUrl}/api/project/addproject`, {
+        let addProjectResponse = await fetch(`${baseUrl}/api/project/addproject`, formData, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
           },
-          body: JSON.stringify(project),
+          // body: JSON.stringify(project),
         });
 
         let addProjectData = await addProjectResponse.json();

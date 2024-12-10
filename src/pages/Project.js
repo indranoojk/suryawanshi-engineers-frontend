@@ -20,23 +20,6 @@ const Project = () => {
       setProject(projects.find((e)=>e.id === Number(id)))
     },[projects,id])
 
-    // const project = projects.find((e) => e.id === Number(projectId));
-
-
-    // const fetchProjectData = async() => {
-    //   projects.map((item)=> {
-    //     if (item.id === id) {
-    //       setProject(item);
-    //       console.log(item._id);
-    //       return null;
-    //     }
-    //   })
-    // }
-
-    // useEffect(() => {
-    //     fetchProjectData();
-    //   },[id, projects]
-    // )
 
   return project ? (
     <>
