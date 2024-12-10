@@ -8,8 +8,7 @@ const AddProject = () => {
   const [projectDetails, setProjectDetails] = useState({
     title: "",
     description: "",
-    content: "",
-    image: ""
+    content: ""
   });
 
   const [image, setImage] = useState(null);
@@ -21,18 +20,18 @@ const AddProject = () => {
     try {
       let project = projectDetails;
       let formData = new FormData();
-      formData.append('project', image);
+      formData.append('image', image);
 
-      let response = await fetch(`${baseUrl}/api/project/images/upload`, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
-      });
+      // let response = await fetch(`${baseUrl}/api/project/images/upload`, {
+      //   method: 'POST',
+      //   headers: { Accept: 'application/json' },
+      //   body: formData,
+      // });
 
-      let dataObj = await response.json();
+      // let dataObj = await response.json();
 
-      if (dataObj.success) {
-        project.image = dataObj.image_url;
+      // if (dataObj.success) {
+        // project.image = dataObj.image_url;
         let addProjectResponse = await fetch(`${baseUrl}/api/project/addproject`, {
           method: 'POST',
           headers: {
@@ -55,7 +54,7 @@ const AddProject = () => {
         //   icon: 'error',
         //   confirmButtonText: 'OK'
         // }));
-      }
+      // }
     } catch (error) {
       setFeedback(alert(`Failed to upload project because ${error}`));
     }

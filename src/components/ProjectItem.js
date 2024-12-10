@@ -14,7 +14,7 @@ const ProjectItem = (props) => {
       <div className='lg:p-2'>
         <Link to={`/project/${props.id}`}>
           <div className='shadow-md rounded-lg overflow-hidden relative group m-2 lg:m-0'>
-            <img className='w-80 h-48 lg:w-80 lg:h-60 object-cover' onClick={window.scrollTo(0, 0)} src={props.image ? baseUrl + props.image : "https://media.istockphoto.com/id/2160200359/photo/3d-render-of-abstract-structure-futuristic-architecture-with-empty-concrete-floor.jpg?b=1&s=612x612&w=0&k=20&c=94O6QRIy1jAxyl0f0LDg4FXdDVxpuLARsPYVGriegP0="} alt="projects" />
+            <img className='w-80 h-48 lg:w-80 lg:h-60 object-cover' onClick={window.scrollTo(0, 0)} src={props.image ? props.image : "https://media.istockphoto.com/id/2160200359/photo/3d-render-of-abstract-structure-futuristic-architecture-with-empty-concrete-floor.jpg?b=1&s=612x612&w=0&k=20&c=94O6QRIy1jAxyl0f0LDg4FXdDVxpuLARsPYVGriegP0="} alt="projects" />
 
             <div className="p-2 lg:p-4 absolute bottom-0 left-0 right-0 lg:mb-4 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:blur-0 group-hover:mb-0 group-hover:bg-white group-hover:text-black">
               <h2 className="text-xl lg:text-2xl font-bold lg:mb-1 uppercase p-1 lg:p-0 w-fit group-hover:p-0">{props.title}</h2>
