@@ -8,40 +8,59 @@ const AddProject = () => {
   const [projectDetails, setProjectDetails] = useState({
     title: "",
     description: "",
-    content: ""
+    content: "",
   });
 
-  const [image, setImage] = useState(null);
+  const [file, setFile] = useState("");
+  const [image, setImage] = useState("");
   const [feedback, setFeedback] = useState("");  // New state for feedback messages
+
+
+  
+  const handleChange = (e) => {
+    const doc = e.target.files[0];
+    setFile(doc);
+    previewFiles(doc);
+  }
+  
+  function previewFiles(doc) {
+    const reader = new FileReader();
+    reader.readAsDataURL(doc);
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    }
+    console.log(image);
+  }
 
   const handleAddProject = async (e) => {
     e.preventDefault();  // Prevent form submission from reloading the page
 
     try {
       let project = projectDetails;
-      let formData = new FormData();
-      formData.append('image', image);
-      formData.append("title", projectDetails.title);
-      formData.append("description", projectDetails.description);
-      formData.append("content", projectDetails.content);
 
       // let response = await fetch(`${baseUrl}/api/project/images/upload`, {
-      //   method: 'POST',
-      //   headers: { Accept: 'application/json' },
-      //   body: formData,
-      // });
+      let response = await fetch(`${baseUrl}/api/project/images/upload`, {
+        method: 'POST',
+        //   headers: {
+        //     Accept: 'application/json',
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(image),
+        image: image
+      });
 
-      // let dataObj = await response.json();
+      let dataObj = await response.json();
 
-      // if (dataObj.success) {
-        // project.image = dataObj.image_url;
-        let addProjectResponse = await fetch(`${baseUrl}/api/project/addproject`, formData, {
+      if (dataObj.success) {
+        project.image = dataObj.image_url;
+        let addProjectResponse = await fetch(`${baseUrl}/api/project/addproject`, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
           },
-          // body: JSON.stringify(project),
+          body: JSON.stringify(project),
         });
 
         let addProjectData = await addProjectResponse.json();
@@ -57,7 +76,7 @@ const AddProject = () => {
         //   icon: 'error',
         //   confirmButtonText: 'OK'
         // }));
-      // }
+      }
     } catch (error) {
       setFeedback(alert(`Failed to upload project because ${error}`));
     }
@@ -99,9 +118,9 @@ const AddProject = () => {
             <div className="mb-3 lg:m-2 row-span-2">
               <p className="text-xs lg:text-base font-semibold text-[#dad1bf]">Select Image*</p>
               <label htmlFor="image">
-                <img className="p-2 w-48 h-32 object-contain" src={!image ? upload_area : URL.createObjectURL(image)} alt="" />
+                <img className="p-2 w-48 h-32 object-contain" src={!file ? upload_area : URL.createObjectURL(file)} alt="" />
               </label>
-              <input onChange={(e) => setImage(e.target.files[0])} type="file" accept="image/*" id="image" name="image" hidden />
+              <input onChange={handleChange} type="file" accept="image/*" id="image" name="image" hidden />
             </div>
             <div>
               <button disabled={projectDetails.title.length < 3 || projectDetails.description.length < 5 || projectDetails.content.length < 15 || !image} type="submit" className="bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-20 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue">
