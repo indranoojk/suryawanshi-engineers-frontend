@@ -18,14 +18,15 @@ const AddProject = () => {
 
   
   const handleChange = (e) => {
-    const doc = e.target.files[0];
-    setFile(doc);
-    previewFiles(doc);
+    const file = e.target.files[0];
+    setFile(file);
+    // console.log(file);
+    previewFiles(file);
   }
   
-  function previewFiles(doc) {
+  function previewFiles(file) {
     const reader = new FileReader();
-    reader.readAsDataURL(doc);
+    reader.readAsDataURL(file);
 
     reader.onloadend = () => {
       setImage(reader.result);
@@ -39,8 +40,8 @@ const AddProject = () => {
     try {
       let project = projectDetails;
 
-      // let response = await fetch(`${baseUrl}/api/project/images/upload`, {
       let response = await fetch(`${baseUrl}/api/project/images/upload`, {
+      // let response = await fetch(`http://localhost:3000/api/project/images/upload`, {
         method: 'POST',
         //   headers: {
         //     Accept: 'application/json',
