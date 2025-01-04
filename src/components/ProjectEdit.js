@@ -100,7 +100,7 @@ const ProjectEdit = (props) => {
                     <td className='px-6 lg:px-10 text-center border border-black p-1 lg:p-2'>
                       <img className='cursor-pointer' src={cross_icon} alt="Delete" onClick={() => { removeProject(e.id) }} />
                     </td>
-                    <hr />
+                    {/* <hr /> */}
                   </tr>
                 ))}
               </tbody>

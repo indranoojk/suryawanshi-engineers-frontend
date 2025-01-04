@@ -3,35 +3,46 @@ import PlainNav from './PlainNav';
 import Sidebar from './Sidebar/Sidebar';
 import upload_area from "../assets/images/upload_area.svg";
 import { baseUrl } from "../Urls";
+import imageCompression from 'browser-image-compression';
 
 const AddProject = () => {
   const [projectDetails, setProjectDetails] = useState({
     title: "",
     description: "",
     content: "",
+    image: "",
   });
 
-  const [file, setFile] = useState("");
-  const [image, setImage] = useState("");
+  const [file, setFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [feedback, setFeedback] = useState("");  // New state for feedback messages
 
 
-  
-  const handleChange = (e) => {
-    const file = e.target.files[0];
-    setFile(file);
-    // console.log(file);
-    previewFiles(file);
-  }
-  
+  const compressImage = async (file) => {
+    const options = {
+      maxSizeMB: 1, // Set max size in MB
+      maxWidthOrHeight: 1920, // Set max width or height
+      useWebWorker: true,
+    };
+    return await imageCompression(file, options);
+  };
+
+  const handleChange = async (e) => {
+    const selectedFile = e.target.files[0];
+    const compressedFile = await compressImage(selectedFile);
+    setFile(compressedFile);
+    previewFiles(compressedFile);
+  };
+
   function previewFiles(file) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
     reader.onloadend = () => {
-      setImage(reader.result);
+      setImageUrl(reader.result);
+      console.log(reader.result); // Log the data URL after it's set
     }
-    console.log(image);
+    // console.log(image);
   }
 
   const handleAddProject = async (e) => {
@@ -39,16 +50,13 @@ const AddProject = () => {
 
     try {
       let project = projectDetails;
-
+      
       let response = await fetch(`${baseUrl}/api/project/images/upload`, {
-      // let response = await fetch(`http://localhost:3000/api/project/images/upload`, {
         method: 'POST',
-        //   headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify(image),
-        image: image
+        body: JSON.stringify({ imageUrl }), // Send image in the body
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
       let dataObj = await response.json();
@@ -61,10 +69,11 @@ const AddProject = () => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(project),
+          body: JSON.stringify({ project }),
         });
 
         let addProjectData = await addProjectResponse.json();
+        console.log(addProjectData);
         setFeedback(addProjectData.success ? alert("Project added successfully!") : alert("Failed to add project"));
         // setFeedback(addProjectData.success ? Swal.fire({
         //   title: 'Success!',
@@ -80,9 +89,12 @@ const AddProject = () => {
       }
     } catch (error) {
       setFeedback(alert(`Failed to upload project because ${error}`));
+      console.log(error);
     }
 
-    setProjectDetails({title: "", description: "", content: "", image: ""})
+    setProjectDetails({ title: "", description: "", content: "", image: "" })
+    setFile(null);
+    setImageUrl("");
 
   };
 
@@ -98,7 +110,7 @@ const AddProject = () => {
         Hello! Mr. Suryawanshi
       </div>
       <form onSubmit={handleAddProject}>  {/* Attach event handler to form submission */}
-        <div className="p-5 text-white lg:flex pb-10"  style={{backgroundImage: `url(${'https://images.pexels.com/photos/19453624/pexels-photo-19453624/free-photo-of-high-line.jpeg?auto=compress&cs=tinysrgb&w=1280'})`, objectFit: 'contain'}}  >
+        <div className="p-5 text-white lg:flex pb-10" style={{ backgroundImage: `url(${'https://images.pexels.com/photos/19453624/pexels-photo-19453624/free-photo-of-high-line.jpeg?auto=compress&cs=tinysrgb&w=1280'})`, objectFit: 'contain' }}  >
           <h2 style={{ fontFamily: "'Cinzel', serif" }} className="text-4xl font-bold font-serif w-48 m-20 text-opacity-85">
             ADD A PROJECT
           </h2>
@@ -124,7 +136,7 @@ const AddProject = () => {
               <input onChange={handleChange} type="file" accept="image/*" id="image" name="image" hidden />
             </div>
             <div>
-              <button disabled={projectDetails.title.length < 3 || projectDetails.description.length < 5 || projectDetails.content.length < 15 || !image} type="submit" className="bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-20 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue">
+              <button disabled={projectDetails.title.length < 3 || projectDetails.description.length < 5 || projectDetails.content.length < 15 || !imageUrl} type="submit" className="bg-green-500 disabled:bg-gray-500 disabled:text-gray-400 ml-20 lg:ml-20 px-12 lg:px-16 py-3 border-2 border-[#716c6a] shadow-sm hover:shadow-xl shadow-[#f5f2f2] focus:outline-none focus:shadow-outline-blue">
                 SUBMIT
               </button>
             </div>
