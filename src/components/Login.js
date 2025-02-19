@@ -77,11 +77,11 @@ const Login = (props) => {
             <form onSubmit={handleSubmit} id='login' action="/login" method="post">
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="email" className='text-lg text-black'>EMAIL*</label> <br/>
-                    <input type="email" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 pl-2 text-slate-800' id='email' name='email' onChange={onChange} required/>
+                    <input type="email" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-white focus:ring-0 focus:border-gray-400 pl-2 text-slate-800' id='email' name='email' onChange={onChange} required/>
                 </div>
                 <div className='mb-3 lg:m-2'>
                     <label htmlFor="lastName" className='text-lg text-black'>Password*</label> <br/>
-                    <input type="password" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-[#716c6a] focus:ring-0 focus:border-gray-400 pl-2 text-slate-800' id='password' name='password' onChange={onChange} required/>
+                    <input type="password" className='mt-0 block w-full lg:w-96 px-0.5 bg-transparent border-0 border-b-2 border-white focus:ring-0 focus:border-gray-400 pl-2 text-slate-800' id='password' name='password' onChange={onChange} required/>
                 </div>
                 <br />
                 <div>
